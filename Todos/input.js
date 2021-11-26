@@ -1,27 +1,46 @@
 import React from "react";
-import { StyleSheet, Text, View, TextInput } from 'react-native'
+import { StyleSheet, Text, View, TextInput, Button, TouchableWithoutFeedbackBase, Alert } from 'react-native'
+import { addTodoActionCreator } from "../State/store";
 
 class Input extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { text: 's' };
+        this.state = { text: '' };
 
         this.handleChange = this.handleChange.bind(this);
+        this.handlePressButton = this.handlePressButton.bind(this);
     }
 
     handleChange(text) {
-        this.setState({ text })
+        this.setState({ text: text })
+    }
+
+    handlePressButton() {
+        if (this.state.text.trim()) {
+            const action = addTodoActionCreator({text: this.state.text, key: Date.now().toString(), done: false})
+            this.setState({text: ''})
+            this.props.dispatch(action)
+        } else {
+            alert('Don\'t leave the field empty.')
+        }
+
     }
 
     render() {
         return (
-            <View>
-                <TextInput style={{ height: 40 }}
+            <View style={styles.inpButContainer}>
+                <TextInput style={styles.inputTodo}
                     placeholder="Type here!"
                     onChangeText={this.handleChange}
-                    defaultValue={this.state.text}
+                    value={this.state.text}
                 />
+                {/* <View style = {styles.buttonContainer}> */}
+                <Button style={styles.enter}
+                    title='Input'
+                    onPress={this.handlePressButton}
+                />
+                {/* </View> */}
             </View>
         )
     }
@@ -29,10 +48,25 @@ class Input extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    inpButContainer: {
+        flexDirection: 'row',
+    },
     inputTodo: {
+        paddingLeft: 5,
+        width: 200,
+        borderRadius: 5,
         borderStyle: 'solid',
-        borderColor: 'black',
+        borderColor: 'orange',
         borderWidth: 2
+    },
+    enter: {
+        height: 40,
+        // color: 'white',
+
+    },
+    buttonContainer: {
+        // backgroundColor: 'grey',
     }
+
 })
 export default Input;
