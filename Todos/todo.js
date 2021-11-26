@@ -27,7 +27,7 @@ class Todo extends React.Component {
                     <TouchableHighlight style={{ width: 40 }}  onPress={this.toggleDone} >
                       
 
-                            <Text style = {{fontSize: 25, color: 'green'}}> {checkMark} </Text>
+                            <Text style = {{fontSize: 20, color: '#00ff7f'}}> {checkMark} </Text>
                         
                     </TouchableHighlight >
                 </View>
@@ -36,7 +36,7 @@ class Todo extends React.Component {
 
 
                 <View style={styles.todo}>
-                    <Text style={{ fontSize: 24, marginLeft: 5, fontWeight: 300 }}>{this.props.todo.text}</Text>
+                    <Text style={{ fontSize: 18, marginLeft: 10, color: '#575767' }}>{this.props.todo.text}</Text>
                 </View>
 
             </View>
@@ -52,21 +52,18 @@ const styles = StyleSheet.create({
     },
 
     todo: {
-        height: 40,
+        height: 30,
         width: 200,
-        borderStyle: 'solid',
-        borderWidth: 2,
-        borderColor: 'black',
     },
 
     checkBox: {
         marginRight: -1,
         borderWidth: 2,
         borderStyle: 'solid',
-        borderColor: 'black',
-        borderRightColor: 'white',
-        width: 40,
-        height: 40
+        borderColor: '#DADADA',
+        borderRadius: 5,
+        width: 24,
+        height: 24
     }
 })
 

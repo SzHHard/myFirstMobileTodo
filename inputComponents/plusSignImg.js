@@ -18,7 +18,7 @@ class InpPanel extends React.Component {
 
                     <Text style={{ fontSize: 38, fontWeight: 'bold' }}>Tasks</Text>
                     <TouchableHighlight style={{ width: 50 }} >
-                        <Image onPress={this.handlePress} source={require('../plus.jpg')} style={{  width: 50, height: 50 }} />
+                        <Image onPress={this.handlePress} source={require('../plus.jpg')} style={{  width: 46, height: 46 }} />
                     </TouchableHighlight >
 
             </View>
