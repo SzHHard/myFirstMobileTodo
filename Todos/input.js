@@ -61,12 +61,7 @@ const styles = StyleSheet.create({
     },
     enter: {
         height: 40,
-        // color: 'white',
-
     },
-    buttonContainer: {
-        // backgroundColor: 'grey',
-    }
 
 })
 export default Input;

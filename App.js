@@ -15,21 +15,17 @@ export default class App extends React.Component {
     store.subscribe(this.forceUpdate.bind(this));
     return (
       <View style={styles.body} >
-
-
-
-
         <View style={store.state.isLightTheme ? styles.container : darkStyles.container}>
-         
+
           <ThemeSwitch dispatch={store.dispatch.bind(store)} isLightTheme={store.state.isLightTheme} />
 
           <ScrollView>
 
-            <InpPanel isLightTheme = {store.state.isLightTheme} dispatch={store.dispatch.bind(store)} />
-            <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+            <InpPanel isLightTheme={store.state.isLightTheme} dispatch={store.dispatch.bind(store)} />
+            {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}> */}
 
               <InputContainer dispatch={store.dispatch.bind(store)} showInput={store.state.showInput} />
-            </TouchableWithoutFeedback>
+            {/* </TouchableWithoutFeedback> */}
 
             <View style={styles.todos} >
               <Todos state={store.state} dispatch={store.dispatch.bind(store)} />
@@ -45,10 +41,6 @@ export default class App extends React.Component {
 }
 
 
-
-
-
-
 const styles = StyleSheet.create({
 
   body: {
@@ -56,12 +48,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
   },
-
   container: {
     flex: 0.9,
     flexDirection: 'column',
     alignItems: 'center',
-
     marginTop: 60,
     paddingTop: 30,
     width: 40,
@@ -69,10 +59,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderStyle: 'solid',
     borderColor: '#EBEBEB',
-
     borderRadius: 12,
   },
-
   todos: {
     marginTop: 10,
   }
@@ -84,12 +72,10 @@ const darkStyles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
   },
-
   container: {
     flex: 0.9,
     flexDirection: 'column',
     alignItems: 'center',
-
     marginTop: 60,
     paddingTop: 30,
     width: 40,
@@ -99,8 +85,6 @@ const darkStyles = StyleSheet.create({
     borderColor: '#29292F',
     borderRadius: 12,
   },
-
-  
   todos: {
     marginTop: 10,
   }

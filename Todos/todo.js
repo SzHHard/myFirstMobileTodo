@@ -1,6 +1,8 @@
 import React from 'react';
-import { Image, TouchableOpacity, CheckBox, StyleSheet, Text, View } from 'react-native';
+import { Image, TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 import { toggleDoneActionCreator } from '../State/store';
+import Galochka from './galochka';
+import Checkbox from './galochka';
 
 
 class Todo extends React.Component {
@@ -17,28 +19,18 @@ class Todo extends React.Component {
     }
 
     render() {
+        let source = null;
 
-        let checkMark = this.props.done ? '✔' : ' '
         return (
             <View style={this.props.isLightTheme ? styles.container : darkStyles.container}>
 
-
                 <View style={this.props.isLightTheme ? styles.checkbox : darkStyles.checkBox}>
                     <TouchableOpacity style={{ marginRight: 5, width: 25, height: 25 }} onPress={this.toggleDone} >
-
-                        <Image style={{ width: 19, height: 19 }} source={this.props.isLightTheme ? require('../galochka3.png') : require('../galochkaDark.png')} />
-
-                        
-                        {/* <Text style={this.props.isLightTheme ? styles.textCheckbox : darkStyles.textCheckbox}> {checkMark} </Text> */}
-
+                        <Galochka isLightTheme={this.props.isLightTheme} done = {this.props.done} />
                     </TouchableOpacity >
                 </View>
 
-
-
-
                 <View style={styles.todo}>
-
                     <Text style={this.props.isLightTheme ? styles.text : darkStyles.text}>{this.props.todo.text}</Text>
                 </View>
 
@@ -46,19 +38,16 @@ class Todo extends React.Component {
         )
     }
 }
-
 const styles = StyleSheet.create({
 
     container: {
         flexDirection: 'row',
         marginBottom: 5,
     },
-
     todo: {
         height: 30,
         width: 200,
     },
-
     checkbox: {
         borderWidth: 2,
         borderStyle: 'solid',
@@ -78,7 +67,6 @@ const styles = StyleSheet.create({
     }
 
 })
-
 
 const darkStyles = StyleSheet.create({
     container: {
