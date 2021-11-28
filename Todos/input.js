@@ -50,6 +50,7 @@ class Input extends React.Component {
 const styles = StyleSheet.create({
     inpButContainer: {
         flexDirection: 'row',
+        marginTop: 10,
     },
     inputTodo: {
         paddingLeft: 5,
@@ -57,7 +58,8 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         borderStyle: 'solid',
         borderColor: 'orange',
-        borderWidth: 2
+        borderWidth: 2,
+       
     },
     enter: {
         height: 40,

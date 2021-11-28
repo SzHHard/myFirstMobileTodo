@@ -12,20 +12,21 @@ export default class App extends React.Component {
   render() {
 
     store.subscribe(this.forceUpdate.bind(this));
-    debugger;
     return (
+      <View style={styles.body} >
+        
+        <View style={styles.container}>
 
-      <View style={styles.container}>
+          <InpPanel dispatch={store.dispatch.bind(store)} />
 
-        <InpPanel dispatch = {store.dispatch.bind(store)} />
+          <InputContainer dispatch={store.dispatch.bind(store)} showInput={store.state.showInput} />
 
-        <InputContainer dispatch = {store.dispatch.bind(store)} showInput = {store.state.showInput}/>
+          <View style={styles.todos} >
+            <Todos state={store.state} dispatch={store.dispatch.bind(store)} />
+          </View>
 
-        <View style={styles.todos} >
-          <Todos state={store.state} dispatch={store.dispatch.bind(store)} />
+          {/* <StatusBar style="auto" /> */}
         </View>
-
-        <StatusBar style="auto" />
       </View>
     );
   }
@@ -37,18 +38,28 @@ export default class App extends React.Component {
 
 
 const styles = StyleSheet.create({
-  container: {
-    /* Auto Layout */
 
+  body: {
     flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+
+  container: {
+   
+    flex: 0.9,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
- 
    
 
+    marginTop: 100,
+    paddingTop: 64,
+    width: 40,
+    
+    
+    
     backgroundColor: '#FFFFFF',
-    borderWidth: 1,
+    borderWidth: 2,
     borderStyle: 'solid',
     borderColor: '#EBEBEB',
     // boxSizing: 'border-box',

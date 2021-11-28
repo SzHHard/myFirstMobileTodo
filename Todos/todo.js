@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, TouchableHighlight, CheckBox, StyleSheet, Text, View } from 'react-native';
+import { Image, TouchableOpacity, CheckBox, StyleSheet, Text, View } from 'react-native';
 import { toggleDoneActionCreator } from '../State/store';
 
 
@@ -24,12 +24,12 @@ class Todo extends React.Component {
 
 
                 <View style={styles.checkBox}>
-                    <TouchableHighlight style={{ marginRight: 5, width: 24, height: 24 }}  onPress={this.toggleDone} >
+                    <TouchableOpacity style={{ marginRight: 5, width: 24, height: 24 }}  onPress={this.toggleDone} >
                       
 
                             <Text style = {{fontSize: 17, color: '#00ff7f'}}> {checkMark} </Text>
                         
-                    </TouchableHighlight >
+                    </TouchableOpacity >
                 </View>
 
 
