@@ -20,7 +20,8 @@ const store = {
         switch (action.type) {
 
             case addTodo:
-                this.state.todos.push(action.todo);
+                // this.state.todos.push(action.todo);
+                this.state.todos = [action.todo, ...this.state.todos];
                 invertedShow = !this.state.showInput;
                 this.state.showInput = invertedShow;
                 // this._callSubscriber()
