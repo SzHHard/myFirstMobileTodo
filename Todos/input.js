@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, TextInput, Button, TouchableWithoutFeedbackBase, Alert } from 'react-native'
-import { addTodoActionCreator } from "../State/store";
+import { addTodoActionCreator, toggleInputAC } from "../State/store";
+
 
 class Input extends React.Component {
 
@@ -18,7 +19,7 @@ class Input extends React.Component {
 
     handlePressButton() {
         if (this.state.text.trim()) {
-            const action = addTodoActionCreator({text: this.state.text, key: Date.now().toString(), done: false})
+            let action = addTodoActionCreator({text: this.state.text, key: Date.now().toString(), done: false})
             this.setState({text: ''})
             this.props.dispatch(action)
         } else {

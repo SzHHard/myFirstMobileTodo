@@ -16,24 +16,28 @@ const store = {
     },
 
     dispatch(action) {
+        let invertedShow;
         switch (action.type) {
+
             case addTodo:
                 this.state.todos.push(action.todo);
-                this._callSubscriber()
+                invertedShow = !this.state.showInput;
+                this.state.showInput = invertedShow;
+                // this._callSubscriber()
                 break;
             case toggleDone:
                 let index = this.state.todos.indexOf(action.todo)
                 let temp = !this.state.todos[index].done //  по другому не работало
                 this.state.todos[index].done = temp;
-                this._callSubscriber()
+                // this._callSubscriber()
                 break;
             case toggleInput:
-               let invertedShow = !this.state.showInput;
-               this.state.showInput = invertedShow;
-               this._callSubscriber()
-            break;
+                invertedShow = !this.state.showInput;
+                this.state.showInput = invertedShow;
+                break;
             default: break;
         }
+        this._callSubscriber()
     },
 
 }
@@ -41,15 +45,15 @@ const store = {
 
 
 export const addTodoActionCreator = (todo) => {
-    return {type: addTodo, todo}
+    return { type: addTodo, todo }
 }
 
 export const toggleDoneActionCreator = (todo) => {
-    return {type: toggleDone, todo: todo}
+    return { type: toggleDone, todo: todo }
 }
 
 export const toggleInputAC = () => {
-    return {type: toggleInput}
+    return { type: toggleInput }
 }
 
 
