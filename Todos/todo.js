@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
     },
 
     checkBox: {
-        boxSizing: 'border-box',
         borderWidth: 2,
         borderStyle: 'solid',
         borderColor: '#DADADA',

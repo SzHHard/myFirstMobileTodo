@@ -19,7 +19,7 @@ export default class App extends React.Component {
 
         <InpPanel dispatch = {store.dispatch.bind(store)} />
 
-        <InputContainer showInput = {store.state.showInput}/>
+        <InputContainer dispatch = {store.dispatch.bind(store)} showInput = {store.state.showInput}/>
 
         <View style={styles.todos} >
           <Todos state={store.state} dispatch={store.dispatch.bind(store)} />
@@ -43,21 +43,17 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
-    padding: 64,
+    justifyContent: 'center',
+ 
+   
 
-    position: 'absolute',
-    width: 505,
-    height: 677,
-    left: 40,
-    top: 199,
-
-    background: '#FFFFFF',
+    backgroundColor: '#FFFFFF',
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: '#EBEBEB',
     // boxSizing: 'border-box',
-    boxShadow: '0px 4px 15px rgba(44, 44, 44, 0.05)',
-    bordeRadius: 12,
+    // boxShadow: '0px 4px 15px rgba(44, 44, 44, 0.05)',
+    borderRadius: 12,
   },
 
   todos: {
