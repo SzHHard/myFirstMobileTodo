@@ -5,7 +5,7 @@ const changeTheme = 'CHANGE-THEME';
 
 const store = {
     state: {
-        todos: [{ text: 'test', key: 'key1', done: false }],
+        todos: [{ text: 'test', key: 'key1', done: false }, { text: 'test', key: 'key2', done: false }, ],
         showInput: false,
         isLightTheme: true, 
     },
@@ -22,17 +22,14 @@ const store = {
         switch (action.type) {
 
             case addTodo:
-                // this.state.todos.push(action.todo);
                 this.state.todos = [action.todo, ...this.state.todos];
                 invertedShow = !this.state.showInput;
                 this.state.showInput = invertedShow;
-                // this._callSubscriber()
                 break;
             case toggleDone:
                 let index = this.state.todos.indexOf(action.todo)
                 let temp = !this.state.todos[index].done //  по другому не работало
                 this.state.todos[index].done = temp;
-                // this._callSubscriber()
                 break;
             case toggleInput:
                 invertedShow = !this.state.showInput;

@@ -12,7 +12,7 @@ class InputContainer extends React.Component {
         return this.props.showInput
             ? (
                 <View >
-                    <Input dispatch={this.props.dispatch} />
+                    <Input isLightTheme = {this.props.isLightTheme} dispatch={this.props.dispatch} />
                 </View>
             )
             : null

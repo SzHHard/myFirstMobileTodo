@@ -1,6 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { TouchableWithoutFeedback, Keyboard, ScrollView, Image, TouchableHighlight, StyleSheet, Text, View } from 'react-native';
+import React, { StrictMode } from 'react';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import Todos from './Todos/todos';
 import store from './State/store';
 import InpPanel from './inputComponents/plusSignImg';
@@ -16,25 +15,17 @@ export default class App extends React.Component {
     return (
       <View style={styles.body} >
         <View style={store.state.isLightTheme ? styles.container : darkStyles.container}>
-
           <ThemeSwitch dispatch={store.dispatch.bind(store)} isLightTheme={store.state.isLightTheme} />
-
+          
           <ScrollView>
-
             <InpPanel isLightTheme={store.state.isLightTheme} dispatch={store.dispatch.bind(store)} />
-            {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}> */}
-
-              <InputContainer dispatch={store.dispatch.bind(store)} showInput={store.state.showInput} />
-            {/* </TouchableWithoutFeedback> */}
-
+            <InputContainer isLightTheme={store.state.isLightTheme} dispatch={store.dispatch.bind(store)} showInput={store.state.showInput} />
             <View style={styles.todos} >
               <Todos state={store.state} dispatch={store.dispatch.bind(store)} />
             </View>
           </ScrollView>
+        
         </View>
-
-
-
       </View>
     );
   }

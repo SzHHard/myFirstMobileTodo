@@ -1,9 +1,7 @@
 import React from 'react';
-import { Image, TouchableOpacity, StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 import { toggleDoneActionCreator } from '../State/store';
 import Galochka from './galochka';
-import Checkbox from './galochka';
-
 
 class Todo extends React.Component {
 
@@ -19,21 +17,17 @@ class Todo extends React.Component {
     }
 
     render() {
-        let source = null;
-
         return (
             <View style={this.props.isLightTheme ? styles.container : darkStyles.container}>
-
                 <View style={this.props.isLightTheme ? styles.checkbox : darkStyles.checkBox}>
-                    <TouchableOpacity style={{ marginRight: 5, width: 25, height: 25 }} onPress={this.toggleDone} >
-                        <Galochka isLightTheme={this.props.isLightTheme} done = {this.props.done} />
+                    <TouchableOpacity style={this.props.isLightTheme ? styles.touchable : darkStyles.touchable } onPress={this.toggleDone} >
+                        <Galochka isLightTheme={this.props.isLightTheme} done={this.props.done} />
                     </TouchableOpacity >
                 </View>
 
                 <View style={styles.todo}>
                     <Text style={this.props.isLightTheme ? styles.text : darkStyles.text}>{this.props.todo.text}</Text>
                 </View>
-
             </View>
         )
     }
@@ -49,12 +43,19 @@ const styles = StyleSheet.create({
         width: 200,
     },
     checkbox: {
+        width: 24,
+        height: 24,
+    },
+    touchable: {
+        paddingLeft: 2,
+        marginRight: 5,
+        width: 25,
+        height: 25,
         borderWidth: 2,
         borderStyle: 'solid',
         borderColor: '#DADADA',
         borderRadius: 5,
-        width: 24,
-        height: 24,
+        backgroundColor: '#F8F8F8'
     },
     textCheckbox: {
         fontSize: 17,
@@ -78,12 +79,20 @@ const darkStyles = StyleSheet.create({
         width: 200,
     },
     checkbox: {
+        width: 24,
+        height: 24,
+       
+    },
+    
+    touchable: {
+        paddingLeft: 2,
+        marginRight: 5,
+        width: 25,
+        height: 25,
         borderWidth: 2,
         borderStyle: 'solid',
         borderColor: '#0E0E11',
         borderRadius: 5,
-        width: 24,
-        height: 24,
         backgroundColor: '#262933',
     },
     textCheckbox: {
