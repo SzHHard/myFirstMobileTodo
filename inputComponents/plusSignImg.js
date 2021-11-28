@@ -1,25 +1,28 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native';
+import { toggleInputAC } from '../State/store';
 
 class InpPanel extends React.Component {
 
     constructor(props) {
         super(props);
 
+        this.handlePress = this.handlePress.bind(this);
     }
 
     handlePress() {
-
+        let action = toggleInputAC();
+        this.props.dispatch(action)
     }
 
     render() {
         return (
             <View style={styles.outerContainer}>
 
-                    <Text style={{ fontSize: 38, fontWeight: 'bold' }}>Tasks</Text>
-                    <TouchableHighlight style={{ width: 50 }} >
-                        <Image onPress={this.handlePress} source={require('../plus.jpg')} style={{  width: 46, height: 46 }} />
-                    </TouchableHighlight >
+                <Text style={{ fontSize: 38, fontWeight: 'bold' }}>Tasks</Text>
+                <TouchableHighlight onPress={this.handlePress} style={{  width: 46, height: 46  }} >
+                    <Image  source={require('../plus.jpg')} style={{ width: 46, height: 46 }} />
+                </TouchableHighlight >
 
             </View>
         )

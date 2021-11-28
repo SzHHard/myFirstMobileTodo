@@ -1,9 +1,11 @@
 const addTodo = 'ADD-TODO';
 const toggleDone = 'TOGGLE-DONE';
+const toggleInput = 'TOGGLE-INPUT';
 
 const store = {
     state: {
         todos: [{ text: 'test', key: 'key1', done: false }],
+        showInput: false,
     },
     _callSubscriber() {
         console.log('bind me')
@@ -25,6 +27,11 @@ const store = {
                 this.state.todos[index].done = temp;
                 this._callSubscriber()
                 break;
+            case toggleInput:
+               let invertedShow = !this.state.showInput;
+               this.state.showInput = invertedShow;
+               this._callSubscriber()
+            break;
             default: break;
         }
     },
@@ -41,6 +48,10 @@ export const toggleDoneActionCreator = (todo) => {
     return {type: toggleDone, todo: todo}
 }
 
-window.store = store;
+export const toggleInputAC = () => {
+    return {type: toggleInput}
+}
+
+
 
 export default store;

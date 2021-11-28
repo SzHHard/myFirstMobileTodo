@@ -2,23 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Image, TouchableHighlight, StyleSheet, Text, View } from 'react-native';
 import Todos from './Todos/todos';
-import Input from './Todos/input';
 import store from './State/store';
 import InpPanel from './inputComponents/plusSignImg';
-
-
-// function MyComponent(props) {
-//   return (
-//     <View style={{ flex: 1, backgroundColor: '#fff' }}>
-//       <Text>My Component</Text>
-//     </View>
-//   );
-// }
-// <TouchableHighlight
-// onPress={() => alert('Pressed!')}>
-// <MyComponent />
-// </TouchableHighlight>
-
+import InputContainer from './Todos/inputContainer';
 
 
 export default class App extends React.Component {
@@ -26,24 +12,15 @@ export default class App extends React.Component {
   render() {
 
     store.subscribe(this.forceUpdate.bind(this));
-
+    debugger;
     return (
 
       <View style={styles.container}>
 
-        <InpPanel />
+        <InpPanel dispatch = {store.dispatch.bind(store)} />
 
-        {/* 
-          <View style={styles.inpHead}>
-            
+        <InputContainer showInput = {store.state.showInput}/>
 
-          </View> */}
-
-
-
-        <View style={styles.inp}>
-          <Input dispatch={store.dispatch.bind(store)} />
-        </View>
         <View style={styles.todos} >
           <Todos state={store.state} dispatch={store.dispatch.bind(store)} />
         </View>
@@ -61,15 +38,30 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inp: {
+    /* Auto Layout */
 
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: 64,
+
+    position: 'absolute',
+    width: 505,
+    height: 677,
+    left: 40,
+    top: 199,
+
+    background: '#FFFFFF',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#EBEBEB',
+    // boxSizing: 'border-box',
+    boxShadow: '0px 4px 15px rgba(44, 44, 44, 0.05)',
+    bordeRadius: 12,
   },
+
   todos: {
     marginTop: 10,
   }
 });
+
