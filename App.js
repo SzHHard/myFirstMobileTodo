@@ -5,6 +5,7 @@ import Todos from './Todos/todos';
 import store from './State/store';
 import InpPanel from './inputComponents/plusSignImg';
 import InputContainer from './Todos/inputContainer';
+import ThemeSwitch from './themeSwitch/themeSwitch';
 
 
 export default class App extends React.Component {
@@ -18,10 +19,13 @@ export default class App extends React.Component {
 
 
 
-        <View style={styles.container}>
+        <View style={store.state.isLightTheme ? styles.container : darkStyles.container}>
+         
+          <ThemeSwitch dispatch={store.dispatch.bind(store)} isLightTheme={store.state.isLightTheme} />
+
           <ScrollView>
 
-            <InpPanel dispatch={store.dispatch.bind(store)} />
+            <InpPanel isLightTheme = {store.state.isLightTheme} dispatch={store.dispatch.bind(store)} />
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
 
               <InputContainer dispatch={store.dispatch.bind(store)} showInput={store.state.showInput} />
@@ -54,24 +58,18 @@ const styles = StyleSheet.create({
   },
 
   container: {
-
     flex: 0.9,
     flexDirection: 'column',
     alignItems: 'center',
 
-
-    marginTop: 100,
-    paddingTop: 64,
+    marginTop: 60,
+    paddingTop: 30,
     width: 40,
-
-
-
     backgroundColor: '#FFFFFF',
     borderWidth: 2,
     borderStyle: 'solid',
     borderColor: '#EBEBEB',
-    // boxSizing: 'border-box',
-    // boxShadow: '0px 4px 15px rgba(44, 44, 44, 0.05)',
+
     borderRadius: 12,
   },
 
@@ -79,4 +77,33 @@ const styles = StyleSheet.create({
     marginTop: 10,
   }
 });
+
+const darkStyles = StyleSheet.create({
+  body: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+
+  container: {
+    flex: 0.9,
+    flexDirection: 'column',
+    alignItems: 'center',
+
+    marginTop: 60,
+    paddingTop: 30,
+    width: 40,
+    backgroundColor: '#1E1F25',
+    borderWidth: 2,
+    borderStyle: 'solid',
+    borderColor: '#29292F',
+    borderRadius: 12,
+  },
+
+  
+  todos: {
+    marginTop: 10,
+  }
+
+})
 

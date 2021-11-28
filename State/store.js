@@ -1,11 +1,13 @@
 const addTodo = 'ADD-TODO';
 const toggleDone = 'TOGGLE-DONE';
 const toggleInput = 'TOGGLE-INPUT';
+const changeTheme = 'CHANGE-THEME';
 
 const store = {
     state: {
         todos: [{ text: 'test', key: 'key1', done: false }],
         showInput: false,
+        isLightTheme: true, 
     },
     _callSubscriber() {
         console.log('bind me')
@@ -36,6 +38,9 @@ const store = {
                 invertedShow = !this.state.showInput;
                 this.state.showInput = invertedShow;
                 break;
+            case changeTheme:
+                let newTheme = !this.state.isLightTheme;
+                this.state.isLightTheme = newTheme;
             default: break;
         }
         this._callSubscriber()
@@ -43,7 +48,9 @@ const store = {
 
 }
 
-
+export const changeThemeAC = () => {
+    return {type: changeTheme}
+}
 
 export const addTodoActionCreator = (todo) => {
     return { type: addTodo, todo }

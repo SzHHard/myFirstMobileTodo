@@ -12,7 +12,7 @@ class Todos extends React.Component {
         return(
             <View>
                 {this.props.state.todos.map((todo) => {
-                    return <Todo dispatch = {this.props.dispatch} done = {todo.done} todo = {todo} />
+                    return <Todo isLightTheme = {this.props.state.isLightTheme} dispatch = {this.props.dispatch} key = {todo.key} done = {todo.done} todo = {todo} />
                 })}
             </View>
         )

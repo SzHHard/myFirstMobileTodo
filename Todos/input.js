@@ -10,14 +10,14 @@ class Input extends React.Component {
         this.state = { text: '' };
 
         this.handleChange = this.handleChange.bind(this);
-        this.handlePressButton = this.handlePressButton.bind(this);
+        this.handleEndEditing = this.handleEndEditing.bind(this);
     }
 
     handleChange(text) {
         this.setState({ text: text })
     }
 
-    handlePressButton() {
+    handleEndEditing() {
         if (this.state.text.trim()) {
             let action = addTodoActionCreator({text: this.state.text, key: Date.now().toString(), done: false})
             this.setState({text: ''})
@@ -35,13 +35,9 @@ class Input extends React.Component {
                     placeholder="Type here!"
                     onChangeText={this.handleChange}
                     value={this.state.text}
+                    onEndEditing={this.handleEndEditing}
+                    autoFocus={true}
                 />
-                {/* <View style = {styles.buttonContainer}> */}
-                <Button style={styles.enter}
-                    title='Input'
-                    onPress={this.handlePressButton}
-                />
-                {/* </View> */}
             </View>
         )
     }
@@ -56,6 +52,7 @@ const styles = StyleSheet.create({
     inputTodo: {
         paddingLeft: 5,
         width: 200,
+        height: 30,
         borderRadius: 5,
         borderStyle: 'solid',
         borderColor: 'orange',

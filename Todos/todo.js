@@ -20,15 +20,17 @@ class Todo extends React.Component {
 
         let checkMark = this.props.done ? '✔' : ' '
         return (
-            <View style={styles.container}>
+            <View style={this.props.isLightTheme ? styles.container : darkStyles.container}>
 
 
-                <View style={styles.checkBox}>
-                    <TouchableOpacity style={{ marginRight: 5, width: 24, height: 24 }}  onPress={this.toggleDone} >
-                      
+                <View style={this.props.isLightTheme ? styles.checkbox : darkStyles.checkBox}>
+                    <TouchableOpacity style={{ marginRight: 5, width: 25, height: 25 }} onPress={this.toggleDone} >
 
-                            <Text style = {{fontSize: 17, color: '#00ff7f'}}> {checkMark} </Text>
+                        <Image style={{ width: 19, height: 19 }} source={this.props.isLightTheme ? require('../galochka3.png') : require('../galochkaDark.png')} />
+
                         
+                        {/* <Text style={this.props.isLightTheme ? styles.textCheckbox : darkStyles.textCheckbox}> {checkMark} </Text> */}
+
                     </TouchableOpacity >
                 </View>
 
@@ -36,7 +38,8 @@ class Todo extends React.Component {
 
 
                 <View style={styles.todo}>
-                    <Text style={{ fontSize: 18, marginLeft: 10, color: '#575767' }}>{this.props.todo.text}</Text>
+
+                    <Text style={this.props.isLightTheme ? styles.text : darkStyles.text}>{this.props.todo.text}</Text>
                 </View>
 
             </View>
@@ -45,7 +48,7 @@ class Todo extends React.Component {
 }
 
 const styles = StyleSheet.create({
-   
+
     container: {
         flexDirection: 'row',
         marginBottom: 5,
@@ -56,17 +59,55 @@ const styles = StyleSheet.create({
         width: 200,
     },
 
-    checkBox: {
+    checkbox: {
         borderWidth: 2,
         borderStyle: 'solid',
         borderColor: '#DADADA',
         borderRadius: 5,
         width: 24,
         height: 24,
-
-       
+    },
+    textCheckbox: {
+        fontSize: 17,
+        color: '#00ff7f'
+    },
+    text: {
+        fontSize: 18,
+        marginLeft: 10,
+        color: '#575767'
     }
+
 })
 
+
+const darkStyles = StyleSheet.create({
+    container: {
+        flexDirection: 'row',
+        marginBottom: 5,
+    },
+    todo: {
+        height: 30,
+        width: 200,
+    },
+    checkbox: {
+        borderWidth: 2,
+        borderStyle: 'solid',
+        borderColor: '#0E0E11',
+        borderRadius: 5,
+        width: 24,
+        height: 24,
+        backgroundColor: '#262933',
+    },
+    textCheckbox: {
+        fontSize: 17,
+        color: 'white'
+    },
+
+    text: {
+        fontSize: 18,
+        marginLeft: 10,
+        color: '#DADADA'
+    }
+})
 
 export default Todo;

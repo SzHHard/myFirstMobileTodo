@@ -19,7 +19,7 @@ class InpPanel extends React.Component {
         return (
             <View style={styles.outerContainer}>
 
-                <Text style={{ fontSize: 38, fontWeight: 'bold' }}>Tasks</Text>
+                <Text style={this.props.isLightTheme ? styles.text : darkStyles.text}>Tasks</Text>
                 <TouchableHighlight onPress={this.handlePress} style={{  width: 46, height: 46  }} >
                     <Image  source={require('../plus.jpg')} style={{ width: 46, height: 46 }} />
                 </TouchableHighlight >
@@ -31,7 +31,10 @@ class InpPanel extends React.Component {
 }
 
 const styles = StyleSheet.create({
-
+    text: {
+     fontSize: 38,
+     fontWeight: 'bold' 
+    },
     outerContainer: {
         flexDirection: 'row',
         justifyContent: "space-between",
@@ -43,5 +46,12 @@ const styles = StyleSheet.create({
     },
 })
 
+const darkStyles = StyleSheet.create({
+    text: {
+     fontSize: 38,
+     fontWeight: 'bold', 
+     color: '#ffffff'
+    },
+})
 
 export default InpPanel
